@@ -2,6 +2,7 @@
 
 #
 #  tokenizer(v0.01 2025/8/12)
+#  text: 2.2(P21) - 2.3(P25) 
 #
 #  input: text
 #  output: converted text into id list with
