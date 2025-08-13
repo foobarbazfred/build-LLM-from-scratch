@@ -1,8 +1,14 @@
 #!/usr/bin/python3
 
 #
-#  tokenizer(v0.01 2025/8/12)
-#  text: 2.2(P21) - 2.3(P25) 
+#  tokenizer text: 2.2(P21) - 2.3(P25) 
+#  v0.01 2025/8/12
+#  v0.02 2025/8/13
+#     add id -> word table
+#
+#
+#
+
 #
 #  input: text
 #  output: converted text into id list with
@@ -92,8 +98,24 @@ with open(INPUT_TEXT, 'r') as f:
                 print(spacer_dic[spacer])
                 target_text.append(f'sp_{spacer_dic[spacer]}')
 
+
+
+def rev_kv_dic(a_dic):
+    rev_dic = {}
+    for k,v in a_dic.items():
+        if v in rev_dic:
+           print('Error in rev_kv_dic')
+           print('duplicate value',v)
+        else:
+           #pdb.set_trace()
+           rev_dic[v] = k
+    return rev_dic
+
 with open(OUTPUT, 'w') as f:
-    tokened = {'word_tbl' : word_dic, 'spacer_tbl' : spacer_dic , 'text' : target_text}
+    tokened = { 'text' : target_text,
+                'word2id' : {'word_tbl' : word_dic, 'spacer_tbl' : spacer_dic } , 
+                'id2word' : {'word_tbl' : rev_kv_dic(word_dic), 'spacer_tbl' : rev_kv_dic(spacer_dic) }
+    }
     json.dump(tokened, f)
 
 
