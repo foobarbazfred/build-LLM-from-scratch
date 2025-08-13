@@ -79,7 +79,7 @@ with open(INPUT_TEXT, 'r') as f:
                 print(f'spacer{spacer}')
                 # regist and convert word
                 if word != '':
-                     if word not in word_dic:
+                    if word not in word_dic:
                         word_dic[word] = word_max_idx
                         word_max_idx += 1
                     print(word_dic[word])
